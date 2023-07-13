@@ -1,78 +1,99 @@
-import React, { useContext, useState } from 'react';
-import { AppContext } from '../context/AppContext';
+import React from 'react';
 
-const ItemSelected = (props) => {
-    const { dispatch} = useContext(AppContext);
+import 'bootstrap/dist/css/bootstrap.min.css';
 
-    const [name, setName] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [action, setAction] = useState('');
-    
+//Code to import 
+import Budget from './components/Budget';
+import ExpenseList from './components/ExpenseList';
+import AllocationForm from './components/AllocationForm';
+import Location from './components/Location';
 
-    const submitEvent = () => {
 
-        const item = {
-            name: name,
-            quantity: parseInt(quantity),
-        };
-
-        if(action === "Reduce") {
-            dispatch({
-                type: 'RED_QUANTITY',
-                payload: item,
-            });
-        } else {
-                dispatch({
-                    type: 'ADD_QUANTITY',
-                    payload: item,
-                });
-            }
-    };
-
+import { AppProvider } from './context/AppContext';
+const App = () => {
     return (
-        <div>
-            <div className='row'>
+        <AppProvider>
 
-            <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
-                    <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="inputGroupSelect01">Items</label>
+            <div className='container'>
+                <h1 className='mt-3'>Company's Budget Allocation</h1>
+                    <div className='row mt-3'>
+
+                    <h1 className='mt-3'>Budget</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <Budget />
+                            </div>
+                            <div className='col-sm'>
+                                    <Budget />
+                            </div>
+                        </div>
+                        
+                        <h1 className='mt-3'>Remanining</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <Remaining />
+                            </div>
+                        <div className='col-sm'>
+                                <Remaining />
+                        </div>
+
+                        <h1 className='mt-3'>Expenses</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <Expenses />
+                            </div>
+                            <div className='col-sm'>
+                                    <Expenses />
+                            </div>
+                        </div>
+                    
+
+                        <h1 className='mt-3'>Location</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <Location />
+                            </div>
+                            <div className='col-sm'>
+                                    <Location />
+                            </div>
+                        </div>  
+                       
+                        <h1 className='mt-3'>ExpenseList</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <ExpenseList />
+                            </div>
+                            <div className='col-sm'>
+                                    <ExpenseList />
+                            </div>
+                        </div>
+
+
+                        <h1 className='mt-3'>ExpenseItem</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <ExpenseItem />
+                            </div>
+                            <div className='col-sm'>
+                                    <ExpenseItem />
+                            </div>
+                        </div>       
+
+                        <h1 className='mt-3'>ExpenseItem Selected</h1>
+                        <div className='row mt-3'> 
+                            <div className='col-sm'>
+                                <AllocationForm />
+                            </div>
+                            <div className='col-sm'>
+                                    <AllocationForm />
+                            </div>
+                        </div>  
+
                 </div>
-                  <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
-                        <option defaultValue>Choose...</option>
-                        <option value="Marketing" name="Marketing"> Marketing</option>
-                        <option value="Finance" name="Finance"> Finance</option>
-                        <option value="Sales" name="Sales"> Sales</option>
-                        <option value="Human Resources" name="Human Resources"> Human Resources</option>
-                        <option value="IT" name="IT"> IT</option>
-                
-                  </select>
-
-                    <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
-                <label className="input-group-text" htmlFor="inputGroupSelect02">Quantity</label>
-                </div>
-                  <select className="custom-select" id="inputGroupSelect02" onChange={(event) => setAction(event.target.value)}>
-                  <option defaultValue value="Add" name="Add">Add</option>
-                <option value="Reduce" name="Reduce">Reduce</option>
-                  </select>  
-                  <span className="eco" style={{ marginLeft: '2rem', marginRight: '8px'}}></span>
-
-                    <input
-                        required='required'
-                        type='number'
-                        id='cost'
-                        value={quantity}
-                        style={{size: 10}}
-                        onChange={(event) => setQuantity(event.target.value)}>
-                        </input>
-
-                    <button className="btn btn-primary" onClick={submitEvent} style={{ marginLeft: '2rem' }}>
-                        Save
-                    </button>
-                </div>
-                </div>
-
-        </div>
+                 </div>
+            
+            </div>
+        </AppProvider>
     );
 };
-
-export default ItemSelected;
+export default App;
