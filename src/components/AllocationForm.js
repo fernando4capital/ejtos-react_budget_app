@@ -42,7 +42,7 @@ const ItemSelected = (props) => {
                         <option value="Marketing" name="Marketing"> Marketing</option>
                         <option value="Finance" name="Finance"> Finance</option>
                         <option value="Sales" name="Sales"> Sales</option>
-                        <option value="HumanResources" name="HumanResources"> HumanResources</option>
+                        <option value="Human Resources" name="Human Resources"> Human Resources</option>
                         <option value="IT" name="IT"> IT</option>
                 
                   </select>
