@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Budget = () => {
-
+    
+    const [name, setName] = useState('');
     const [quantity, setQuantity] = useState('');
 
     return (
